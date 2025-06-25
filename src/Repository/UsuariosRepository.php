@@ -16,20 +16,18 @@ class UsuariosRepository extends ServiceEntityRepository
         parent::__construct($registry, Usuarios::class);
     }
 
-    //    /**
-    //     * @return Usuarios[] Returns an array of Usuarios objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('u')
-    //            ->andWhere('u.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('u.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+    * @return Usuarios|null Returna um objeto de Usuario
+    */
+        public function findByCpf($cpf): Usuarios
+        {
+            return $this->createQueryBuilder('u')
+                ->Where('u.cpf = :cpf')
+                ->setParameter('cpf', $cpf)
+                ->getQuery()
+                ->getSingleResult()
+            ;
+        }
 
     //    public function findOneBySomeField($value): ?Usuarios
     //    {
