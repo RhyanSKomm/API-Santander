@@ -19,13 +19,13 @@ class UsuariosRepository extends ServiceEntityRepository
     /**
     * @return Usuarios|null Returna um objeto de Usuario
     */
-        public function findByCpf($cpf): Usuarios
+        public function findByCpf($cpf): Usuarios|null
         {
             return $this->createQueryBuilder('u')
                 ->Where('u.cpf = :cpf')
                 ->setParameter('cpf', $cpf)
                 ->getQuery()
-                ->getSingleResult()
+                ->getOneOrNullResult()
             ;
         }
 
